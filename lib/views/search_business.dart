@@ -41,7 +41,6 @@ class _SearchBusinessState extends State<SearchBusiness> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 10, right: 10),
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.black12,
@@ -49,30 +48,16 @@ class _SearchBusinessState extends State<SearchBusiness> {
                       color: Colors.grey[100],
                       borderRadius:
                       const BorderRadius.all(Radius.circular(10))),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
-                      value: dropdownValue,
-                      elevation: 16,
-                      onChanged: (String? value) {
-                        // This is called when the user selects an item.
-                        setState(() {
-                          dropdownValue = value!;
-                          if(dropdownValue == 'Business Name'){
-                            search_by = 'business_name';
-                          } else if(dropdownValue == 'Phone Number'){
-                            search_by = 'phone_number';
-                          } else{
-                            search_by = 'license_state';
-                          }
-                        });
-                      },
-                      items: list.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Search',
+                        contentPadding: EdgeInsets.all(10)),
+                    onChanged: (value){
+                      setState(() {
+                        search_name = value;
+                      });
+                    },
                   ),
                 ),
                 SizedBox( height: 20,),
@@ -80,6 +65,7 @@ class _SearchBusinessState extends State<SearchBusiness> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width*0.75,
+                      padding: EdgeInsets.only(left: 10, right: 10),
                       decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black12,
@@ -87,16 +73,30 @@ class _SearchBusinessState extends State<SearchBusiness> {
                           color: Colors.grey[100],
                           borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Search',
-                            contentPadding: EdgeInsets.all(10)),
-                        onChanged: (value){
-                          setState(() {
-                            search_name = value;
-                          });
-                        },
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: dropdownValue,
+                          elevation: 16,
+                          onChanged: (String? value) {
+                            // This is called when the user selects an item.
+                            setState(() {
+                              dropdownValue = value!;
+                              if(dropdownValue == 'Business Name'){
+                                search_by = 'business_name';
+                              } else if(dropdownValue == 'Phone Number'){
+                                search_by = 'phone_number';
+                              } else{
+                                search_by = 'license_state';
+                              }
+                            });
+                          },
+                          items: list.map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                     SizedBox( width: 20,),

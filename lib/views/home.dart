@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       color: isLightMode ? AppTheme.white : AppTheme.nearlyBlack,
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           body: Padding(
             padding: EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 20),
@@ -125,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Company Name:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
-                              Text(widget.user!.businessName, style: TextStyle(fontSize: 16),),
+                              Expanded(child: Text(widget.user!.businessName, style: TextStyle(fontSize: 16),),)
                             ],
                           ),
                         ),
@@ -145,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Phone:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
-                              Text(widget.user!.phone, style: TextStyle(fontSize: 16),),
+                              Expanded(child: Text(widget.user!.phone, style: TextStyle(fontSize: 16),),)
                             ],
                           ),
                         ),
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("License Number:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
-                              Text(widget.user!.licenseNum, style: TextStyle(fontSize: 16),),
+                              Expanded(child: Text(widget.user!.licenseNum, style: TextStyle(fontSize: 16),),)
                             ],
                           ),
                         ),
@@ -165,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Contact Person:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
-                              Text(widget.user!.contactName, style: TextStyle(fontSize: 16),),
+                              Expanded(child: Text(widget.user!.contactName, style: TextStyle(fontSize: 16),),)
                             ],
                           ),
                         ),
@@ -175,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Email:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
-                              Text(widget.user!.businessEmail, style: TextStyle(fontSize: 16),),
+                              Expanded(child: Text(widget.user!.businessEmail, style: TextStyle(fontSize: 16),),)
                             ],
                           ),
                         ),
