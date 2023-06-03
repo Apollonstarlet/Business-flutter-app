@@ -127,18 +127,7 @@ class _SearchBusinessState extends State<SearchBusiness> {
                   ],
                 ),
                 SizedBox(height: 20,),
-                isLoading ? Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
-                        color: Colors.grey[100],
-                        borderRadius:
-                        const BorderRadius.all(Radius.circular(10))),
-                    child: Text('You have reached your search limit for the month. Please upgrade your plan to continue searching', softWrap: true,)
-                ) : Flexible(
+                isLoading ? Container() : Flexible(
                   child: ListView.builder(
                       itemCount: businesses?.length,
                       itemBuilder: (context, index){

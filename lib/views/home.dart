@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width*0.28,
-                          height: 220,
+                          height: 180,
                           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -51,13 +51,13 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Grade", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black26),),
                               SizedBox(height: 20,),
-                              Text(widget.user!.score, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 90, color: Colors.green),),
+                              Text(widget.user!.score, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.green),),
                             ],
                           )
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width*0.28,
-                          height: 220,
+                          height: 180,
                           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -70,10 +70,10 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                width: 90, height: 90,
+                                width: 70, height: 70,
                                 child:Image.asset('assets/images/search.png'),
                               ),
-                              SizedBox(height: 20,),
+                              SizedBox(height: 10,),
                               Text("Total", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),),
                               SizedBox(height: 10,),
                               Text(widget.user!.numberSearch.toString(), style: TextStyle(fontSize: 16, color: Colors.white),),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width*0.28,
-                          height: 220,
+                          height: 180,
                           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -95,9 +95,9 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                  height: 90, width: 90,
+                                  height: 70, width: 70,
                                   child: Image.asset('assets/images/mobile.png')),
-                              SizedBox(height: 20,),
+                              SizedBox(height: 10,),
                               Text("Type", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),),
                               SizedBox(height: 10,),
                               Text(widget.user!.typeOfBusiness, style: TextStyle(fontSize: 16, color: Colors.white),),
