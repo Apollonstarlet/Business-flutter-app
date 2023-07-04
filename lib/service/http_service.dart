@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:cannicheck/models/membership.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
+import 'package:path/path.dart';
 
 import '../models/business.dart';
 import '../models/user.dart';
@@ -9,6 +11,7 @@ import '../models/user.dart';
 class HttpService {
   static final _client = http.Client();
   // static var _baseUrl = 'http://10.10.2.2:5000/';
+  // static var _baseUrl = 'http://cannicheck.com/';
   static var _baseUrl = 'https://cannicheck.herokuapp.com/';
 
   Future<User?> login(String email, String password) async {
@@ -113,9 +116,32 @@ class HttpService {
     }
   }
 
-  Future<bool?> transaction(company, routine_solution, transaction_date, metrics, amount) async {
+  Future<bool?> upload_term(selectedfile, val) async {
+    String uploadurl = _baseUrl+'api/upload_term';
+    FormData formdata = FormData.fromMap({
+      "term_file": await MultipartFile.fromFile(
+          selectedfile.path,
+          filename: basename(selectedfile.path)
+        //show only filename from path
+      ),
+    });
+    Dio dio = new Dio();
+    var response = await dio.post(uploadurl, data: formdata,);
+    print("okay");
+    print(response.statusCode);
+    if(response.statusCode == 200){
+      print(response.toString());
+      //print response from server
+      return true;
+    }else{
+      print("Error during connection to server.");
+      return false;
+    }
+  }
+
+  Future<bool?> transaction(company, routine_solution, transaction_date, metrics, amount, term_filename, invoice_filename, manifest_filename) async {
     var response = await _client.post(Uri.parse(_baseUrl+'api/transaction'), body: {
-      "company_name": company, "other_transaction_company": routine_solution, "transaction_date": transaction_date, "metrics": metrics, "transaction_amount": amount
+      "company_name": company, "other_transaction_company": routine_solution, "transaction_date": transaction_date, "metrics": metrics, "transaction_amount": amount, "term_filename": term_filename, "invoice_filename": invoice_filename, "manifest_filename": manifest_filename
     });
     print(response.statusCode);
     if (response.statusCode == 200) {

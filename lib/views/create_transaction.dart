@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -23,6 +24,8 @@ class _CreateTransactionState extends State<CreateTransaction> {
   PlatformFile? file1, file2, file3;
   bool is_terms1 = false, is_terms2 = false, is_terms3 = false;
   bool isLoading = false;
+
+  File? selectedfile;
 
   @override
   void initState() {
@@ -159,14 +162,15 @@ class _CreateTransactionState extends State<CreateTransaction> {
                       SizedBox(width: 5,),
                       TextButton(
                         onPressed: () async {
-                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+                          FilePickerResult? result = await await FilePicker.platform.pickFiles(
+                            type: FileType.custom,
+                            allowedExtensions: ['jpg', 'pdf', 'doc', 'png'],
+                          );
                           if (result != null) {
-                            file1 = result.files.first;
-                            print(file1?.name);
-                            print(file1?.extension);
-                            print(file1?.path);
                             setState(() {
+                              file1 = result.files.first;
                               is_terms1 = true;
+                              // term_file_path = file1?.path.toString();
                             });
                           } else {
                             print('No file selected');
@@ -187,11 +191,10 @@ class _CreateTransactionState extends State<CreateTransaction> {
                         onPressed: () async {
                           FilePickerResult? result = await FilePicker.platform.pickFiles();
                           if (result != null) {
-                            file2 = result.files.first;
-                            print(file2?.name);
-                            print(file2?.path);
                             setState(() {
+                              file2 = result.files.first;
                               is_terms2 = true;
+                              // invoice_file_path = file2?.path.toString();
                             });
                           } else {
                             print('No file selected');
@@ -212,11 +215,10 @@ class _CreateTransactionState extends State<CreateTransaction> {
                         onPressed: () async {
                           FilePickerResult? result = await FilePicker.platform.pickFiles();
                           if (result != null) {
-                            file3 = result.files.first;
-                            print(file3?.name);
-                            print(file3?.path);
                             setState(() {
+                              file3 = result.files.first;
                               is_terms3 = true;
+                              // manifest_file_path = file3?.path.toString();
                             });
                           } else {
                             print('No file selected');
@@ -257,7 +259,8 @@ class _CreateTransactionState extends State<CreateTransaction> {
                     ),
                     onPressed: () async {
                       isLoading = !isLoading;
-                      var transaction = await HttpService().transaction(company.text, routine_solution.text, transaction_date.text, metrics.text, amount.text);
+                      var transaction = await HttpService().upload_term(file1, "term");
+                      // var transaction = await HttpService().transaction(company.text, routine_solution.text, transaction_date.text, metrics.text, amount.text, file1, file2, file3);
                       if(transaction != null){
                         await EasyLoading.showSuccess('Success');
                       } else{
