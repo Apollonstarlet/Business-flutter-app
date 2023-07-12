@@ -81,7 +81,7 @@ class _NavigationHomeState extends State<NavigationHome> {
         case DrawerIndex.Create:
           setState(() {
             if(widget.user!.subscriptionActive == true) {
-              screenView = CreateTransaction();
+              screenView = CreateTransaction(widget.user, widget.toggle);
             } else{
               screenView = Membership(widget.user);
             }
