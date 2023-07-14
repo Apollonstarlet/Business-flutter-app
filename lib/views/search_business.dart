@@ -18,6 +18,7 @@ class _SearchBusinessState extends State<SearchBusiness> {
   late String search_by, search_name;
   String dropdownValue = list.first;
   List<Business>? businesses;
+  bool is_result = true;
   bool isLoading = true;
 
   @override
@@ -111,13 +112,16 @@ class _SearchBusinessState extends State<SearchBusiness> {
                           const BorderRadius.all(Radius.circular(5))),
                       child: InkWell(
                           onTap: () async {
+                            setState(() {
+                              is_result = false;
+                              isLoading = true;
+                            });
                             print(search_by);
                             print(search_name);
                             businesses = await HttpService().search_business(search_by, search_name);
                             setState(() {
                               if(businesses != null){
                                 isLoading = false;
-                                print(businesses?.length);
                               }
                             });
                           },
@@ -127,8 +131,8 @@ class _SearchBusinessState extends State<SearchBusiness> {
                   ],
                 ),
                 SizedBox(height: 20,),
-                isLoading ? Container() : Flexible(
-                  child: ListView.builder(
+                is_result ? Container() : Flexible(
+                  child: isLoading ? Center(child: CircularProgressIndicator()) : ListView.builder(
                       itemCount: businesses?.length,
                       itemBuilder: (context, index){
                         return Container(

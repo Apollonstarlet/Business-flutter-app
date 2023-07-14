@@ -31,26 +31,11 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  "Login",
-                  style:
-                  TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
-                Image.asset(
-                  "assets/images/logo.jpg",
-                  height: 250,
-                  width: double.infinity,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Email",
-                  style: TextStyle(fontSize: 12),
-                ),
+                SizedBox(height: 50,),
+                Text("Login", style:TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
+                Image.asset("assets/images/logo.jpg", height: 250, width: double.infinity,),
+                SizedBox(height: 20,),
+                Text("Email", style: TextStyle(fontSize: 12),),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -69,13 +54,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 3,
-                ),
+                SizedBox(height: 3,),
                 _validateEmail ? Text('Email Value Can\'t Be Empty', style: TextStyle(color: Colors.redAccent, fontSize: 12),) : Container(),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20,),
                 Text(
                   "Password",
                   style: TextStyle(fontSize: 12),
@@ -98,13 +79,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 3,
-                ),
+                SizedBox(height: 3,),
                 _validatePassword ? Text('Password Value Can\'t Be Empty', style: TextStyle(color: Colors.redAccent, fontSize: 12),) : Container(),
-                SizedBox(
-                  height: 5,
-                ),
+                SizedBox(height: 5,),
                 InkWell(
                     onTap: () {
                       Navigator.push(
@@ -112,13 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(
                               builder: (_) => const ForgotPassword()));
                     },
-                    child: Text(
-                      "Forgot Password ? ",
-                      style: TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),
-                    )),
-                SizedBox(
-                  height: 10,
-                ),
+                    child: Text("Forgot Password ? ", style: TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),)),
+                SizedBox(height: 10,),
                 MaterialButton(
                   color: Theme.of(context).primaryColor,
                   height: 20,
