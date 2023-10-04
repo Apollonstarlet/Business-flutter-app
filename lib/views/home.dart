@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           child: Row(
                             children: [
-                              Text("Business Email:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                              Text("Email:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                               SizedBox(width: 10,),
                               Expanded(child: Text(widget.user!.businessEmail, style: TextStyle(fontSize: 16),),)
                             ],

@@ -10,8 +10,10 @@ class PaypalServices {
   // String domain = "https://api.paypal.com"; /// for production mode
 
   /// change clientId and secret with your own, provided by paypal
-  String clientId = 'AakG7WbO_TgRE1s81yk6OfdsKFvydLgPD3UjMTrWWeMAHXMSRpWdmRBQvFdpXXrw1geeGoKuovxcsthm';
-  String secret = 'EBVv3l6I0q_PXDezEz5zg67nSG4Bbij-B8cp-yp2LzANOsiZ53EiWuYhA3K9-7m36QqY2e1yhk3oxVPn';
+  String clientId =
+      'AakG7WbO_TgRE1s81yk6OfdsKFvydLgPD3UjMTrWWeMAHXMSRpWdmRBQvFdpXXrw1geeGoKuovxcsthm';
+  String secret =
+      'EBVv3l6I0q_PXDezEz5zg67nSG4Bbij-B8cp-yp2LzANOsiZ53EiWuYhA3K9-7m36QqY2e1yhk3oxVPn';
 
   /// for getting the access token from Paypal
   Future<String?> getAccessToken() async {
@@ -35,7 +37,10 @@ class PaypalServices {
     try {
       var response = await http.post(Uri.parse("$domain/v1/payments/payment"),
           body: convert.jsonEncode(transactions),
-          headers: { "content-type": "application/json", 'Authorization': 'Bearer ' + accessToken});
+          headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer ' + accessToken
+          });
 
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 201) {
@@ -70,7 +75,10 @@ class PaypalServices {
     try {
       var response = await http.post(url,
           body: convert.jsonEncode({"payer_id": payerId}),
-          headers: {"content-type": "application/json", 'Authorization': 'Bearer ' + accessToken});
+          headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer ' + accessToken
+          });
 
       final body = convert.jsonDecode(response.body);
       if (response.statusCode == 200) {

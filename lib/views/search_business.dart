@@ -136,65 +136,65 @@ class _SearchBusinessState extends State<SearchBusiness> {
                       itemCount: businesses?.length,
                       itemBuilder: (context, index){
                         return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.black12,
-                              ),
-                              color: Colors.grey[100],
-                              borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width*0.2,
-                                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                child: Image.asset('assets/images/documents.png'),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width*0.5,
-                                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(businesses![index].companyName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                    SizedBox(height: 20,),
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Text("Grade:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                          SizedBox(width: 10,),
-                                          Text(businesses![index].score, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 20,),
-                                    MaterialButton(
-                                      color: Theme.of(context).primaryColor,
-                                      height: 16,
-                                      minWidth: double.infinity,
-                                      padding: const EdgeInsets.symmetric(vertical: 8),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          side: BorderSide(color: Theme.of(context).primaryColor)),
-                                      child: Text(
-                                        "More Info",
-                                        style: TextStyle(color: Colors.white, fontSize: 16),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context)=>BusinessDetail(businesses![index])
-                                        ));
-                                      },
-                                    ),
-                                  ],
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.black12,
                                 ),
-                              )
-                            ],
-                          )
+                                color: Colors.grey[100],
+                                borderRadius:
+                                const BorderRadius.all(Radius.circular(10))),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width*0.2,
+                                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                  child: Image.asset('assets/images/documents.png'),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width*0.5,
+                                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(businesses![index].companyName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                                      SizedBox(height: 20,),
+                                      Container(
+                                        child: Row(
+                                          children: [
+                                            Text("Grade:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                                            SizedBox(width: 10,),
+                                            Text(businesses![index].score, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 20,),
+                                      MaterialButton(
+                                        color: Theme.of(context).primaryColor,
+                                        height: 16,
+                                        minWidth: double.infinity,
+                                        padding: const EdgeInsets.symmetric(vertical: 8),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            side: BorderSide(color: Theme.of(context).primaryColor)),
+                                        child: Text(
+                                          "More Info",
+                                          style: TextStyle(color: Colors.white, fontSize: 16),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context)=>BusinessDetail(businesses![index])
+                                              ));
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )
                         );
                       }
                   ),

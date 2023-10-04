@@ -44,7 +44,11 @@ class _MembershipState extends State<Membership> {
                   child: Column(
                     children: [
                       SizedBox(height: 50,),
-                      Image.asset("assets/images/logo.jpg", height: 250, width: double.infinity,),
+                      Image.asset(
+                        "assets/images/logo.jpg",
+                        height: 250,
+                        width: double.infinity,
+                      ),
                       SizedBox(height: 20,),
                       Text("You have to purchase new Membership", style: TextStyle(fontSize: 18,),),
                       SizedBox(height: 10,),
@@ -81,7 +85,9 @@ class _MembershipState extends State<Membership> {
                             margin: EdgeInsets.symmetric(vertical: 20),
                             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12,),
+                                border: Border.all(
+                                  color: Colors.black12,
+                                ),
                                 color: Colors.grey[100],
                                 borderRadius:
                                 const BorderRadius.all(Radius.circular(10))),
@@ -151,7 +157,11 @@ class _MembershipState extends State<Membership> {
                                                       action: SnackBarAction(
                                                         label: 'Close',
                                                         onPressed: () {
-                                                          Navigator.pushReplacement(context,  MaterialPageRoute(builder: (_) => Authenticate()));
+                                                          // Some code to undo the change.
+                                                          Navigator.pushReplacement(
+                                                              context,
+                                                              MaterialPageRoute(builder: (_) => Authenticate())
+                                                          );
                                                         },
                                                       ),
                                                     );
@@ -180,7 +190,11 @@ class _MembershipState extends State<Membership> {
                                                       action: SnackBarAction(
                                                         label: 'Close',
                                                         onPressed: () {
-                                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Authenticate()));
+                                                          // Some code to undo the change.
+                                                          Navigator.pushReplacement(
+                                                              context,
+                                                              MaterialPageRoute(builder: (_) => Authenticate())
+                                                          );
                                                         },
                                                       ),
                                                     );

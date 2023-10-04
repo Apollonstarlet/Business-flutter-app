@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:convert';
 import 'package:cannicheck/models/membership.dart';
 import 'package:dio/dio.dart';
@@ -10,6 +11,8 @@ import '../models/user.dart';
 
 class HttpService {
   static final _client = http.Client();
+  // static var _baseUrl = 'http://10.10.2.2:5000/';
+  // static var _baseUrl = 'http://cannicheck.com/';
   static var _baseUrl = 'https://cannicheck.herokuapp.com/';
 
   Future<User?> login(String email, String password) async {
@@ -174,7 +177,6 @@ class HttpService {
       return false;
     }
   }
-
   Future<bool?> upload_manifest(file) async {
     try {
       FormData formData = new FormData.fromMap({"manifest_file": await MultipartFile.fromFile(file.path, filename: basename(file.path))});
@@ -190,4 +192,5 @@ class HttpService {
       return false;
     }
   }
+
 }
